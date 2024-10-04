@@ -1,0 +1,236 @@
+// 14. Abstract Classes and Casting
+// Deeper Dive:
+
+//     Abstract Classes: You cannot instantiate them directly. They can have abstract methods (without a body) that must be implemented by subclasses.
+//     Casting: Involves converting one data type into another, often used with object references in inheritance hierarchies.
+
+// Example:
+
+// java
+
+abstract class Animal {
+    public abstract void makeSound();  // Abstract method
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.makeSound();  // Output: Barks
+        
+        // Casting from Animal to Dog (downcasting)
+        Dog realDog = (Dog) dog;
+        realDog.makeSound();  // Output: Barks
+    }
+}
+
+// 15. Imports, Packages, and Scope
+// Deeper Dive:
+
+//     Packages: Organize classes and interfaces in namespaces.
+//     Imports: Enable the use of classes from other packages.
+//     Scope: Determines the visibility of variables and methods.
+
+// Example of Packages:
+
+// java
+
+// In package animals:
+package animals;
+
+public class Dog {
+    public void bark() {
+        System.out.println("Woof!");
+    }
+}
+
+// In another file:
+import animals.Dog;
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.bark();  // Output: Woof!
+    }
+}
+
+// 16. Linked Lists
+// Deeper Dive:
+
+// A linked list is a dynamic data structure where elements are stored in nodes, with each node pointing to the next.
+// Example of Singly Linked List:
+
+// java
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.printList();  // Output: 1 -> 2 -> 3 -> null
+    }
+}
+
+// 17. Exceptions Part 1
+// Deeper Dive:
+
+// Exceptions are errors that occur during program execution. You can handle exceptions using try-catch blocks to avoid crashes.
+// Example:
+
+// java
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;  // Division by zero
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");  // Handle the exception
+        }
+    }
+}
+
+// 18. Exceptions Part 2
+// Deeper Dive:
+
+// You can create custom exceptions and use throw to trigger them when needed.
+// Example:
+
+// java
+
+class AgeException extends Exception {
+    public AgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    public static void checkAge(int age) throws AgeException {
+        if (age < 18) {
+            throw new AgeException("Age must be 18 or above.");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (AgeException e) {
+            System.out.println(e.getMessage());  // Output: Age must be 18 or above.
+        }
+    }
+}
+
+// 19. Queues and Stacks
+// Deeper Dive:
+
+//     Stack: LIFO (Last In, First Out) structure.
+//     Queue: FIFO (First In, First Out) structure.
+
+// Example:
+
+// java
+
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+    public static void main(String[] args) {
+        // Stack
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.pop();  // Removes 2
+        System.out.println(stack.peek());  // Output: 1
+
+        // Queue
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+        queue.add(2);
+        queue.remove();  // Removes 1
+        System.out.println(queue.peek());  // Output: 2
+    }
+}
+
+// 20. Interfaces
+// Deeper Dive:
+
+// Interfaces define a contract for classes without providing method implementations. Classes that implement an interface must provide implementations for all its methods.
+// Example:
+
+// java
+
+interface Animal {
+    void sound();
+}
+
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Barks");
+    }
+}
+
+class Cat implements Animal {
+    public void sound() {
+        System.out.println("Meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound();  // Output: Barks
+
+        Animal cat = new Cat();
+        cat.sound();  // Output: Meows
+    }
+}

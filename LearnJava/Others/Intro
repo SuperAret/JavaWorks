@@ -1,0 +1,69 @@
+
+// 1. Overview of Object-Oriented Programming (OOP), Classes, and Data Structures
+// Deeper Dive:
+
+//     OOP Principles: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+//         Encapsulation: Hiding internal details using private fields and exposing functionalities via public methods.
+//         Inheritance: Allows a class to inherit properties and methods from another class.
+//         Polymorphism: The ability for different classes to respond to the same method in different ways.
+//         Abstraction: Hides complexity by exposing only the essentials.
+
+// Example of all OOP Principles:
+
+// java
+
+class Animal {
+    private String name; // Encapsulation
+    
+    public Animal(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void makeSound() {  // Polymorphism: Can be overridden by subclasses
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {  // Inheritance
+    public Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void makeSound() {  // Polymorphism: Overriding
+        System.out.println("Dog barks");
+    }
+}
+
+abstract class Bird extends Animal {  // Abstraction
+    public Bird(String name) {
+        super(name);
+    }
+
+    public abstract void fly();  // Abstract method
+}
+
+class Parrot extends Bird {
+    public Parrot(String name) {
+        super(name);
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("Parrot flies");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog("Buddy");
+        dog.makeSound();  // Dog barks
+
+        Bird parrot = new Parrot("Polly");
+        parrot.fly();  // Parrot flies
+    }
+}

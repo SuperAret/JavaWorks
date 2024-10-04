@@ -1,0 +1,93 @@
+// 9. Dictionaries and Hash Maps
+
+// Hash maps store key-value pairs and allow quick lookup based on keys.
+// Example:
+
+// java
+
+import java.util.HashMap;
+
+HashMap<String, Integer> studentGrades = new HashMap<>();
+studentGrades.put("Alice", 90);
+studentGrades.put("Bob", 85);
+System.out.println("Alice's grade: " + studentGrades.get("Alice"));
+
+// 10. Recursion
+
+// Recursion is a function calling itself to solve a smaller problem of the same nature.
+// Example:
+
+// java
+
+public int factorial(int n) {
+    if (n == 1) return 1;
+    return n * factorial(n - 1);
+}
+
+// 11. Binary
+
+// Binary numbers represent values using only 0s and 1s. 
+// Java allows binary literals using the 0b prefix.
+// Example:
+
+// java
+
+int binary = 0b1010;  // Binary representation of 10
+System.out.println(binary);  // Output: 10
+
+// 12. Creating a Library Catalogue From Scratch
+// Example:
+
+// java
+
+import java.util.HashMap;
+
+class Book {
+    String title;
+    boolean isCheckedOut;
+
+    public Book(String title) {
+        this.title = title;
+        this.isCheckedOut = false;
+    }
+
+    public void checkOut() {
+        this.isCheckedOut = true;
+    }
+}
+
+public class Library {
+    HashMap<String, Book> books = new HashMap<>();
+
+    public void addBook(Book book) {
+        books.put(book.title, book);
+    }
+
+    public void checkOutBook(String title) {
+        Book book = books.get(title);
+        if (book != null && !book.isCheckedOut) {
+            book.checkOut();
+            System.out.println("Checked out: " + title);
+        }
+    }
+}
+
+// 13. Inheritance
+
+// Inheritance allows one class to inherit properties and methods from another class.
+// Example:
+
+// java
+
+class Animal {
+    public void sound() {
+        System.out.println("Some sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Barks");
+    }
+}

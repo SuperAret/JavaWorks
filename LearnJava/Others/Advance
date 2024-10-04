@@ -1,0 +1,133 @@
+
+
+// 21. Pointers, Aliasing, Garbage Collection, and Java Virtual Machine (JVM)
+// Deeper Dive:
+
+//     Pointers and Aliasing: In Java, references are like pointers in C/C++, though Java does not give direct access to memory addresses.
+//     Garbage Collection: Java automatically frees unused objects to reclaim memory.
+//     JVM: The Java Virtual Machine runs Java bytecode on any platform.
+
+// Example:
+
+// java
+
+class MyObject {
+    int value;
+    MyObject(int value) {
+        this.value = value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyObject obj1 = new MyObject(10);
+        MyObject obj2 = obj1;  // Aliasing: obj2 points to the same object as obj1
+        obj2.value = 20;
+        System.out.println(obj1.value);  // Output: 20 (both point to the same memory)
+    }
+}
+
+// 22. Generics
+// Deeper Dive:
+
+// Generics allow you to create classes, interfaces, and methods with a placeholder for data types.
+// Example:
+
+// java
+
+class Box<T> {
+    private T item;
+    
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public T getItem() {
+        return item;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.setItem("Hello");
+        System.out.println(stringBox.getItem());  // Output: Hello
+
+        Box<Integer> intBox = new Box<>();
+        intBox.setItem(123);
+        System.out.println(intBox.getItem());  // Output: 123
+    }
+}
+
+// 23. Heaps and Binary Search Trees (BSTs)
+// Deeper Dive:
+
+//     Heap: A specialized tree-based data structure that satisfies the heap property (max-heap or min-heap).
+//     Binary Search Tree: A tree where each node has a value greater than or equal to all values in its left subtree and less than or equal to all values in its right subtree.
+
+// Example (BST Insertion):
+
+// java
+
+class Node {
+    int value;
+    Node left, right;
+
+    public Node(int value) {
+        this.value = value;
+        left = right = null;
+    }
+}
+
+class BST {
+    Node root;
+
+    public BST() {
+        root = null;
+    }
+
+    public void insert(int value) {
+        root = insertRec(root, value);
+    }
+
+    private Node insertRec(Node root, int value) {
+        if (root == null) {
+            root = new Node(value);
+            return root;
+        }
+
+        if (value < root.value)
+            root.left = insertRec(root.left, value);
+        else if (value > root.value)
+            root.right = insertRec(root.right, value);
+
+        return root;
+    }
+
+    public void inorder() {
+        inorderRec(root);
+    }
+
+    private void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.value + " ");
+            inorderRec(root.right);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BST bst = new BST();
+        bst.insert(50);
+        bst.insert(30);
+        bst.insert(20);
+        bst.insert(40);
+        bst.insert(70);
+        bst.insert(60);
+        bst.insert(80);
+        
+        bst.inorder();  // Output: 20 30 40 50 60 70 80
+    }
+}

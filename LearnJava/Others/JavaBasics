@@ -1,0 +1,117 @@
+// 2. Data Types
+// Deeper Dive:
+
+//     Primitive Data Types: byte, short, int, long, float, double, boolean, char.
+//     Reference Types: Arrays, Classes, Interfaces.
+
+// Java provides wrapper classes (Integer, Double, etc.) to convert primitive data types into objects, which allows primitive values to be used in collections.
+// Example:
+
+// java
+
+int num = 5;  // Primitive data type
+Integer numObj = Integer.valueOf(num);  // Wrapper class
+System.out.println(numObj);  // Output: 5
+
+// 3. Variables and Arithmetic
+// Deeper Dive:
+
+// Variables store data, and arithmetic operations can be performed on them. You can also manipulate strings using methods like substring(), length(), etc.
+// Example of String Arithmetic:
+
+// java
+
+String firstName = "John";
+String lastName = "Doe";
+String fullName = firstName + " " + lastName;  // String concatenation
+System.out.println(fullName);  // Output: John Doe
+
+// 4. If Statements
+// Deeper Dive:
+
+// You can use nested if statements, else if, and ternary operators to make decisions.
+// Example:
+
+// java
+
+int age = 20;
+
+if (age >= 18) {
+    System.out.println("Adult");
+} else if (age >= 13) {
+    System.out.println("Teenager");
+} else {
+    System.out.println("Child");
+}
+
+// Ternary operator
+String category = (age >= 18) ? "Adult" : "Not Adult";
+System.out.println(category);  // Output: Adult
+
+// 5. Boolean Operators and Classes vs. Instances
+// Deeper Dive:
+
+//     Boolean operators (&&, ||, !) are used to combine multiple conditions.
+//     Classes: Blueprint for objects.
+//     Instances: Actual objects created from the class.
+
+// Example:
+
+// java
+
+boolean hasJob = true;
+boolean hasDegree = false;
+
+if (hasJob && hasDegree) {
+    System.out.println("Eligible for promotion.");
+} else if (hasJob || hasDegree) {
+    System.out.println("Partially eligible.");
+} else {
+    System.out.println("Not eligible.");
+}
+
+// 6. Loops
+// Deeper Dive:
+
+//     For Loop: Repeats a block of code for a specific number of times.
+//     While Loop: Repeats until a condition is false.
+//     Do-While Loop: Similar to while, but guarantees at least one execution.
+
+// Example:
+
+// java
+
+int i = 0;
+while (i < 5) {
+    System.out.println(i);
+    i++;
+}
+
+// 7. Making A Mad Lib with Arrays
+// Deeper Dive:
+
+// Arrays are used to store multiple values. You can use loops to iterate through arrays and create more dynamic Mad Libs.
+// Example:
+
+// java
+
+String[] words = {"cat", "jumps", "high"};
+for (String word : words) {
+    System.out.println(word);
+}
+
+// 8. More Arrays
+// Deeper Dive:
+
+// Arrays can be multidimensional and can be used with loops to perform complex operations.
+// Example:
+
+// java
+
+int[][] matrix = {{1, 2, 3}, {4, 5, 6}};
+for (int[] row : matrix) {
+    for (int num : row) {
+        System.out.print(num + " ");
+    }
+    System.out.println();
+}
